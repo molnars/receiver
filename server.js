@@ -17,9 +17,9 @@ const SMTPTO = env.get('SMTPTO').required();
 
 async function mailer() {
 let transporter = nodemailer.createTransport({
-  host: ${SMTPHOST},
-  port: ${SMTPPORT},
-  secure: ${SMTPSECURE}
+  host: SMTPHOST,
+  port: SMTPPORT,
+  secure: SMTPSECURE
 });
 
 let info = await transporter.sendMail({
