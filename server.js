@@ -2,8 +2,8 @@
 
 const express = require('express');
 const bodyParser = require("body-parser");
-const nodemailer = require("nodemailer");
-const env = require('env-var');
+//const nodemailer = require("nodemailer");
+//const env = require('env-var');
 
 // Constants
 const PORT = env.get('LISTENPORT').default('8080');
@@ -15,24 +15,24 @@ const SMTPFROM = env.get('SMTPFROM').required();
 const SMTPTO = env.get('SMTPTO').required();
 
 
-async function mailer() {
-let transporter = nodemailer.createTransport({
-  host: SMTPHOST,
-  port: SMTPPORT,
-  secure: SMTPSECURE
-});
+//async function mailer() {
+//let transporter = nodemailer.createTransport({
+//  host: SMTPHOST,
+//  port: SMTPPORT,
+//  secure: SMTPSECURE
+//});
 
-let info = await transporter.sendMail({
-  from: '${SMTPFROM}', // sender address
-  to: '${SMTPTO}', // list of receivers
-  subject: "Hello ✔", // Subject line
-  text: "Hello world?", // plain text body
-  html: "<b>Hello world?</b>", // html body
-});
+//let info = await transporter.sendMail({
+//  from: '${SMTPFROM}', // sender address
+//  to: '${SMTPTO}', // list of receivers
+//  subject: "Hello ✔", // Subject line
+//  text: "Hello world?", // plain text body
+//  html: "<b>Hello world?</b>", // html body
+//});
 
 
-console.log("Message sent: %s", info.messageId);
-}
+//console.log("Message sent: %s", info.messageId);
+//}
 
 // App
 const app = express();
