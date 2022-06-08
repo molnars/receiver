@@ -16,6 +16,7 @@ const SMTPPORT = env.get('SMTPPORT').default('25').asPortNumber();
 const SMTPSECURE = env.get('SMTPSECURE').default('false').asBool();
 const SMTPFROM = env.get('SMTPFROM').default('noone@example.net').required().asString();
 const SMTPTO = env.get('SMTPTO').required().asString();
+const SMTPDEBUG = env.get('SMTP_DEBUG').default('false').asBool();
 
 
 async function mailer() {
@@ -23,7 +24,9 @@ async function mailer() {
 let transporter = nodemailer.createTransport({
   host: SMTPHOST,
   port: SMTPPORT,
-  secure: SMTPSECURE
+  secure: SMTPSECURE,
+  debug: SMTPDEBUG,
+  logger: SMTPDEBUG
 });
 
 let info = await transporter.sendMail({
