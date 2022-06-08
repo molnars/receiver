@@ -8,11 +8,11 @@ const bodyParser = require("body-parser");
 // Constants
 const PORT = env.get('LISTENPORT').default('8080');
 const HOST = '0.0.0.0';
-const SMTPHOST = env.get('SMTPHOST').required();
-const SMTPPORT = env.get('SMTPPORT').default('25').asPortNumber();
-const SMTPSECURE = env.get('SMTPSECURE').default('false');
-const SMTPFROM = env.get('SMTPFROM').required();
-const SMTPTO = env.get('SMTPTO').required();
+//const SMTPHOST = env.get('SMTPHOST').required();
+//const SMTPPORT = env.get('SMTPPORT').default('25').asPortNumber();
+//const SMTPSECURE = env.get('SMTPSECURE').default('false');
+//const SMTPFROM = env.get('SMTPFROM').required();
+//const SMTPTO = env.get('SMTPTO').required();
 
 
 //async function mailer() {
