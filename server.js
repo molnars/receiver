@@ -6,7 +6,8 @@ const bodyParser = require("body-parser");
 //const env = require('env-var');
 
 // Constants
-const PORT = env.get('LISTENPORT').default('8080');
+//const PORT = env.get('LISTENPORT').default('8080');
+const PORT = '8080';
 const HOST = '0.0.0.0';
 //const SMTPHOST = env.get('SMTPHOST').required();
 //const SMTPPORT = env.get('SMTPPORT').default('25').asPortNumber();
@@ -37,12 +38,20 @@ const HOST = '0.0.0.0';
 // App
 const app = express();
 app.use(bodyParser.json())
+const dateObject = new Date();
+const date = (`0 ${dateObject.getDate()}`).slice(-2);
+const month = (`0 ${dateObject.getMonth() + 1}`).slice(-2);
+const year = dateObject.getFullYear();
+const hours = dateObject.getHours();
+const minutes = dateObject.getMinutes();
+const seconds = dateObject.getSeconds();
+
 app.get("/", (req, res) => {
   console.log("get")
   res.status(200).end()
 })
 app.post("/hook", (req, res) => {
-  console.log(req.body) // Call your action on the request here
+  console.log("".concat(`${year}-${month}-${date} ${hours}:${minutes}:${seconds}: `).concat(req.body)) // Call your action on the request here
   res.status(200).end() // Responding is important
 })
 
@@ -52,7 +61,7 @@ app.post("/hook", (req, res) => {
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
-console.log(`SMTP host:${SMTPHOST}:${SMTPPORT}`);
+//console.log(`SMTP host:${SMTPHOST}:${SMTPPORT}`);
 //
 //curl -kv http://localhost:8080/hook -XPOST -H "Content-Type: application/json" -d '{"data": "value"}'
 //
