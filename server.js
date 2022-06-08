@@ -39,8 +39,8 @@ const HOST = '0.0.0.0';
 const app = express();
 app.use(bodyParser.json())
 const dateObject = new Date();
-const date = (`0 ${dateObject.getDate()}`).slice(-2);
-const month = (`0 ${dateObject.getMonth() + 1}`).slice(-2);
+const date = (`0${dateObject.getDate()}`).slice(-2);
+const month = (`0${dateObject.getMonth() + 1}`).slice(-2);
 const year = dateObject.getFullYear();
 const hours = dateObject.getHours();
 const minutes = dateObject.getMinutes();
@@ -51,7 +51,7 @@ app.get("/", (req, res) => {
   res.status(200).end()
 })
 app.post("/hook", (req, res) => {
-  console.log("".concat(`${year}-${month}-${date} ${hours}:${minutes}:${seconds}: `).concat(req.body)) // Call your action on the request here
+  console.log("".concat(`${year}-${month}-${date} ${hours}:${minutes}:${seconds}: `).concat(JSON.stringify(req.body))) // Call your action on the request here
   res.status(200).end() // Responding is important
 })
 
